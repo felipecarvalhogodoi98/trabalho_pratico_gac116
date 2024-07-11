@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'frontend',
     'apps.users',
     'apps.portfolios',
+    'apps.vacancies',
 ]
 
 MIDDLEWARE = [
