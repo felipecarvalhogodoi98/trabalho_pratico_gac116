@@ -3,6 +3,7 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
+    name = models.CharField(max_length=255, default='Default Name')
     avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
     USER_TYPE_CHOICES = (
         ('company', 'Company'),

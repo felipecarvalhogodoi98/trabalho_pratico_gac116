@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block titulo %} 
+  Jobs - Login 
+{% endblock %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="row">
+    <h2 class="text-center mb-5">
+      <a href="/" class="text-decoration-none text-light">Jobs</a>
+    </h2>
+
+    <div>
+
+      <h1 class="text-center">Login</h1>
+
+      <form id="login-form">
+        <div class="mb-3">
+          <label for="username" class="form-label">User:</label>
+          <input type="text" id="username" name="username" class="form-control" required>
+        </div>
+
+        <div class="mb-3" class="form-label">
+          <label for="password">Senha:</label>
+          <input type="password" id="password" name="password" class="form-control" required>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-center">
+          <button type="button" class="btn btn-primary">Login</button>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <a href="/register" class="btn btn-secondary">Cadastro</a>
+        </div>
+      </form>
+
+      <div id="response"></div>
+
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/login.js' %}"></script>
+
+
+{% endblock %}

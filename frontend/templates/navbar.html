@@ -1,0 +1,37 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="/">Jobs</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Vagas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/portfolios">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/aplicacoes">Aplicações</a>
+        </li>
+      </ul>
+      <div class="" role="search">
+        <div class="logged d-none d-flex align-items-center">
+          <span id="username" class="text-light me-3"></span>
+          <img src="" alt="Avatar" class="avatar me-5" id="avatar">
+          <button class="logout btn btn-dark">Logout</button>
+        </div>
+
+        <div class="not-logged d-none d-flex align-items-center">
+          <a href="/login" class="login btn btn-dark">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script src="{% static 'js/navbar.js' %}"></script>
+
