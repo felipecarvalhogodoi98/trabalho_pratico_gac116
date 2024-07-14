@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+
+{% block title %} Jobs - Perfil {% endblock %}
+
+{% block content %}
+  
+  {% include "navbar.html" %} 
+  
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row">  
+      <div>
+  
+        <h1 class="text-center">Perfil</h1>
+  
+        <form id="perfil-form" enctype="multipart/form-data">
+          {% csrf_token %}
+            <div class="mb-3">
+              <label for="username" class="form-label">Usuario:</label>
+              <input type="text" id="username" name="username" class="form-control" disabled>
+            </div>
+            
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input type="email" id="email" name="email" class="form-control" disabled>
+            </div>
+            
+            <div class="mb-3">
+              <label for="name" class="form-label">Nome:</label>
+              <input type="text" id="name" name="name" class="form-control" disabled>
+            </div>
+  
+            <div class="mb-3">
+              <label for="user_type" class="form-label">Type:</label>
+              <select id="user_type" name="user_type" class="form-select" disabled>
+                <option value="user">User</option>
+                <option value="company">Empresa</option>
+              </select>  
+            </div>
+        </form>
+  
+        <div id="response"></div>
+  
+      </div>
+    </div>
+  </div>  
+
+{% endblock %}
