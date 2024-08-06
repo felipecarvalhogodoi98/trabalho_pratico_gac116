@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from apps.users.models  import CustomUser
 from .models import Vacancy, VacancyBenefit, VacancyResponsibility, VacancyRequirement, Application
 
 class VacancyBenefitSerializer(serializers.ModelSerializer):
@@ -21,12 +22,18 @@ class ApplicationSerializer(serializers.ModelSerializer):
         model = Application
         fields = ('id', 'vacancy', 'user', 'created_at', 'updated_at')
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ('id', 'name', 'avatar')
+
 class VacancySerializer(serializers.ModelSerializer):
     benefits = VacancyBenefitSerializer(many=True, read_only=True)
     responsibilities = VacancyResponsibilitySerializer(many=True, read_only=True)
     requirements = VacancyRequirementSerializer(many=True, read_only=True)
     applications = ApplicationSerializer(many=True, read_only=True)
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Vacancy
-        fields = ('id', 'user', 'title', 'description', 'created_at', 'updated_at', 'benefits', 'responsibilities', 'requirements', 'applications')
+        fields = ('id', 'user', 'title', 'description', 'created_at', 'updated_at', 'benefits', 'responsibilities', 'requirements', 'applications', 'user')

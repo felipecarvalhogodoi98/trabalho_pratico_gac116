@@ -7,7 +7,7 @@ async function getNewAccessToken() {
     return;
   }
 
-  const response = await fetch("/api/token/refresh/", {
+  const response = await fetch("/api/users/token/refresh/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +25,7 @@ async function getNewAccessToken() {
   }
 }
 
-async function fetchWithAuth(url, options = {}) {
+async function fetchWithAuthUser(url, options = {}) {
   let accessToken = localStorage.getItem("access_token");
 
   if (!accessToken) {
@@ -50,9 +50,9 @@ async function fetchWithAuth(url, options = {}) {
 }
 
 async function getUserDetails() {
-  if (hasUserInfo() || publicPages()) return;
+  if (isPublicPages()) return;
 
-  const response = await fetchWithAuth("/api/users/me/", {
+  const response = await fetchWithAuthUser("/api/users/me/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -64,6 +64,7 @@ async function getUserDetails() {
     fillProfile(user);
     fillNavbar(user);
     localStorage.setItem("user", JSON.stringify(user));
+    userRestrictions();
   } else {
     // TODO:
   }
@@ -80,7 +81,7 @@ function hasUserInfo() {
 }
 
 function redirectToLogin() {
-  if (publicPages()) return;
+  if (isPublicPages()) return;
 
   if (!isAuthenticated()) {
     window.location.href = "/login";
@@ -127,7 +128,7 @@ function getUser() {
   return JSON.parse(localStorage.getItem("user"));
 }
 
-function publicPages() {
+function isPublicPages() {
   return (
     window.location.pathname === "/login" ||
     window.location.pathname === "/register"
@@ -145,4 +146,22 @@ if (!isAuthenticated()) {
 } else {
   const logged = document.querySelector(".logged");
   if (logged) logged.classList.remove("d-none");
+}
+
+function userRestrictions() {
+  if (getUser().user_type === "company") {
+    document.querySelectorAll("[user]").forEach(function (element) {
+      element.classList.add("d-none");
+    });
+    document.querySelectorAll("[user-company]").forEach(function (element) {
+      element.classList.remove("d-none");
+    });
+  } else {
+    document.querySelectorAll("[user]").forEach(function (element) {
+      element.classList.remove("d-none");
+    });
+    document.querySelectorAll("[user-company]").forEach(function (element) {
+      element.classList.add("d-none");
+    });
+  }
 }

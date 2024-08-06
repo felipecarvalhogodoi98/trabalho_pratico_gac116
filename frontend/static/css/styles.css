@@ -9,3 +9,9 @@ html {
   height: 38px;
   border-radius: 50%;
 }
+
+.benefit + .benefit,
+.responsibility + .responsibility,
+.requirement + .requirement {
+  margin-top: 1rem;
+}

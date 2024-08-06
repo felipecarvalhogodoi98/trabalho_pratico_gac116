@@ -11,3 +11,6 @@ def index(request):
 
 def perfil(request):
     return render(request, 'perfil.html')
+
+def registerVacancy(request):
+    return render(request, 'register-vacancy.html')
