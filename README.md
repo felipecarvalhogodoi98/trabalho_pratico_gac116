@@ -116,9 +116,9 @@ As dependêcias do projetos incluem:
 ```
 
 - Home with company logged
-
+![home](https://github.com/felipecarvalhogodoi98/trabalho_pratico_gac116/blob/main/docs/images/HomeCompany.png)
 - Home with normal user logged
-
+![home](https://github.com/felipecarvalhogodoi98/trabalho_pratico_gac116/blob/main/docs/images/HomeUser.png)
 
 ## Autores
 - [thiagof201014](https://github.com/thiagof201014)
