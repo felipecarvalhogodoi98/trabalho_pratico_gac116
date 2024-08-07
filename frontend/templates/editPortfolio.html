@@ -10,7 +10,69 @@
   
   <div class="container d-flex justify-content-center p-4 min-vh-100">
     <div class="row vacancies gap-3" style="height: min-content;">
-      <div class="edit-portfolio-container"></div>
+      <form id="edit-portfolio-form">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="description" class="form-label">Descrição:</label>
+          <textarea id="description" name="description" class="form-control" required></textarea>
+        </div>
+
+        <h3 class="fs-4">Certificados</h3>
+        <div id="certificates" class="mb-3">
+            <div class="certificate mb-3">
+              <label for="certificate-description" class="form-label">Descrição:</label>
+              <input type="certificate-description" class="certificate-description form-control">
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary mb-4 add-certificate">Adicionar Certificado</button>
+
+        <h3 class="fs-4">Skills</h3>
+        <div id="skills" class="mb-3">
+            <div class="skill mb-3">
+              <label for="skill-description" class="form-label">Descrição:</label>
+              <input type="skill-description" class="skill-description form-control">
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary mb-4 add-skill">Adicionar Skill</button>
+
+        <h3 class="fs-4">Projetos</h3>
+        <div id="projects" class="mb-3">
+            <div class="project mb-3">
+              <label for="project-description" class="form-label">Name:</label>
+              <input type="text" class="project-description form-control mb-3">
+
+              <label for="project-link" class="form-label">Link:</label>
+              <input type="text" class="project-link form-control mb-3">
+
+              <label for="project-git" class="form-label">Git:</label>
+              <input type="text" class="project-git form-control mb-3">
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary mb-4 add-project">Adicionar Skill</button>
+
+        <div class="mb-3 d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary">Confirmar</button>
+        </div>
+      </form>
+
+      <div id="response"></div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="edit-portfolio-modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
   </div>
   
