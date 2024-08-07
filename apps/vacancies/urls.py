@@ -5,7 +5,9 @@ from .views import (
     VacancyBenefitListCreateView,
     VacancyResponsibilityListCreateView,
     VacancyRequirementListCreateView,
-    ApplicationListCreateView
+    ApplicationListCreateView,
+    ApplicationListByUserView,
+    VacancyWithApplicationsListView
 )
 
 urlpatterns = [
@@ -15,4 +17,6 @@ urlpatterns = [
     path('<int:vacancy_pk>/responsibilities/', VacancyResponsibilityListCreateView.as_view(), name='vacancy-responsibility-list-create'),
     path('<int:vacancy_pk>/requirements/', VacancyRequirementListCreateView.as_view(), name='vacancy-requirement-list-create'),
     path('<int:vacancy_pk>/applications/', ApplicationListCreateView.as_view(), name='application-list-create'),
+    path('user/applications/', ApplicationListByUserView.as_view(), name='user-application-list'),
+    path('with-applications/', VacancyWithApplicationsListView.as_view(), name='vacancies-with-applications'),
 ]

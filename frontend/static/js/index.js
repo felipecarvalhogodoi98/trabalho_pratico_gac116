@@ -65,6 +65,7 @@ async function getUserDetails() {
     fillNavbar(user);
     localStorage.setItem("user", JSON.stringify(user));
     userRestrictions();
+    window.dispatchEvent(new CustomEvent("user", {}));
   } else {
     // TODO:
   }

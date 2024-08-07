@@ -14,3 +14,6 @@ def perfil(request):
 
 def registerVacancy(request):
     return render(request, 'register-vacancy.html')
+
+def applications(request):
+    return render(request, 'applications.html')

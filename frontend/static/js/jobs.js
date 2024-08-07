@@ -120,11 +120,17 @@ const applyModal = document.getElementById("apply-modal");
 const applyModalBootstrap = new bootstrap.Modal(applyModal);
 
 async function applyToVacancy(vacancyId, title) {
+  const user = getUser();
   const response = await fetchWithAuth(
     `/api/vacancies/${vacancyId}/applications/`,
     {
       method: "POST",
-      body: JSON.stringify({ user: getUser().id, vacancy: Number(vacancyId) }),
+      body: JSON.stringify({
+        user: user.id,
+        applicant_name: user.name,
+        applicant_email: user.email,
+        vacancy: Number(vacancyId),
+      }),
     }
   );
 
@@ -148,4 +154,5 @@ async function applyToVacancy(vacancyId, title) {
   }
 }
 
+window.addEventListener("user", fillVacancies);
 fillVacancies();
