@@ -25,6 +25,17 @@ async function registerUser(e) {
       localStorage.setItem("access_token", result.access);
       localStorage.setItem("refresh_token", result.refresh);
       responseHtml.innerText = "Registration successful!";
+      if (result.user.user_type === "user")
+        await Promise.all([
+          fetch(`/api/portfolios/`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + result.access,
+            },
+            body: JSON.stringify({}),
+          }),
+        ]);
       window.location = "/";
     } else {
       responseHtml.innerText = "Registration failed: " + JSON.stringify(result);

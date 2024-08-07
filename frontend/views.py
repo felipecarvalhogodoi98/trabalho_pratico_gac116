@@ -17,3 +17,9 @@ def registerVacancy(request):
 
 def applications(request):
     return render(request, 'applications.html')
+
+def portfolios(request):
+    return render(request, 'portfolios.html')
+
+def editarPortfolio(request):
+    return render(request, 'editPortfolio.html')

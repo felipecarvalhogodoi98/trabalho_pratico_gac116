@@ -28,6 +28,7 @@ async function getVacancies() {
 async function fillVacancies() {
   const vacancies = await getVacancies();
 
+  vacanciesContainer.innerHTML = "";
   vacancies.reverse().forEach((vacancie) => {
     fillTemplate(vacancie);
   });
@@ -67,7 +68,7 @@ function fillTemplate(vacancie) {
   const user = getUser();
 
   let userHasAplication = vacancie.applications.some(
-    (aplication) => aplication.user === user.id
+    (aplication) => aplication.user === user?.id
   );
 
   if (userHasAplication) {

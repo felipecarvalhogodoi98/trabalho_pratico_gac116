@@ -1,5 +1,11 @@
 from rest_framework import serializers
+from apps.users.models  import CustomUser
 from .models import Portfolio, PortfolioCertificate, PortfolioSkill, PortfolioProject
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ('id', 'name', 'avatar')
 
 class PortfolioCertificateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,7 +26,8 @@ class PortfolioSerializer(serializers.ModelSerializer):
     certificates = PortfolioCertificateSerializer(many=True, read_only=True)
     skills = PortfolioSkillSerializer(many=True, read_only=True)
     projects = PortfolioProjectSerializer(many=True, read_only=True)
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Portfolio
-        fields = ('id', 'user', 'created_at', 'updated_at', 'certificates', 'skills', 'projects')
+        fields = ('id', 'user', 'description', 'created_at', 'updated_at', 'certificates', 'skills', 'projects')
