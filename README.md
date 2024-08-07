@@ -68,7 +68,7 @@ As dependêcias do projetos incluem:
 ## API Endpoints
 
 #### User
-```http
+```
   POST /api/user/register/
   GET /api/user/me/
   POST /api/user/login/
@@ -77,7 +77,7 @@ As dependêcias do projetos incluem:
 ```
 
 #### Portfolios
-```http
+```
   POST /api/portfolios/
   GET /api/portfolios/user/
   GET /api/portfolios/<int:pk>/
@@ -91,7 +91,7 @@ As dependêcias do projetos incluem:
 ```
 
 #### Vacancies
-```http
+```
   POST /api/vacancies/
   GET /api/vacancies/
   GET /api/vacancies/<int:pk>/
@@ -104,7 +104,7 @@ As dependêcias do projetos incluem:
 ```
 
 #### Frontend
-```http
+```
   GET /
   GET /login
   GET /register
@@ -114,6 +114,11 @@ As dependêcias do projetos incluem:
   GET /portfolios
   GET /editar-portfolio
 ```
+
+- Home with company logged
+
+- Home with normal user logged
+
 
 ## Autores
 - [thiagof201014](https://github.com/thiagof201014)
