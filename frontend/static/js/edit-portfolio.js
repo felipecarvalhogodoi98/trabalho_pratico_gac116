@@ -127,6 +127,13 @@ async function displayEditPortfolio() {
 async function submitForm(e) {
   e.preventDefault();
 
+  form.classList.remove("was-validated");
+
+  if (!form.checkValidity()) {
+    form.classList.add("was-validated");
+    return;
+  }
+
   const values = {};
   values.id = form.getAttribute("portfolio-id");
   values.description = description.value;
@@ -264,13 +271,16 @@ async function submitForm(e) {
       });
     } else {
       const errorData = await response.json();
-      document.getElementById("response").innerText =
-        "Registration failed: " + JSON.stringify(errorData);
+
+      editPortfolioModal.querySelector(".modal-title").innerText = "Erro!";
+      editPortfolioModal.querySelector(
+        ".modal-body"
+      ).innerText = `Ocorreu um erro ao atualizar seu portfolio!`;
+      editPortfolioModalBootstrap.toggle();
     }
   } catch (error) {
     console.error("Erro ao atualizar portfolio:", error);
   }
-  // Fetch dos novos, e updates
 }
 
 const form = document.querySelector("#edit-portfolio-form");

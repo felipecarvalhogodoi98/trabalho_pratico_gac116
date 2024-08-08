@@ -34,7 +34,7 @@ function createPortfolioCard(portfolio, currentUser) {
   card.style.minWidth = "270px";
   console.log(portfolio);
   card.innerHTML = `
-    <div class="card-body position-relative" style="padding-right: 80px">
+    <div class="card-body position-relative">
       <h5 class="card-title">
         <img src="${portfolio.user.avatar}" alt="Avatar" class="avatar me-2">
         ${portfolio.user.name}
@@ -70,7 +70,7 @@ function createPortfolioCard(portfolio, currentUser) {
 
       ${
         currentUser
-          ? `<a href="editar-portfolio" class="btn btn-primary position-absolute" style="bottom: 16px; right: 16px;">Editar</a>`
+          ? `<a href="editar-portfolio" class="btn btn-primary position-absolute" style="top: 16px; right: 16px;">Editar</a>`
           : ""
       }
     </div>

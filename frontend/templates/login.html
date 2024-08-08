@@ -20,11 +20,19 @@
         <div class="mb-3">
           <label for="username" class="form-label">User:</label>
           <input type="text" id="username" name="username" class="form-control" required>
+          <span class="error-message" data-source="username"></span>
+          <div class="invalid-feedback">
+            Preencha o username.
+          </div>
         </div>
 
         <div class="mb-3" class="form-label">
           <label for="password">Senha:</label>
           <input type="password" id="password" name="password" class="form-control" required>
+          <span class="error-message" data-source="password"></span>
+          <div class="invalid-feedback">
+            Preencha a senha.
+          </div>
         </div>
 
         <div class="mb-3 d-flex justify-content-center">

@@ -1,10 +1,13 @@
-const loginButton = document.querySelector("#login-form button");
+const form = document.querySelector("#login-form");
+const loginButton = form.querySelector("button");
 
 function isAuthenticated() {
   return localStorage.getItem("access_token") !== null;
 }
 
 async function loginUser() {
+  form.classList.remove("was-validated");
+
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
@@ -21,12 +24,11 @@ async function loginUser() {
   if (response.ok) {
     localStorage.setItem("access_token", result.access);
     localStorage.setItem("refresh_token", result.refresh);
-    document.getElementById("response").innerText = "Login successful!";
+    // document.getElementById("response").innerText = "Login successful!";
 
     window.location = "/";
   } else {
-    document.getElementById("response").innerText =
-      "Login failed: " + JSON.stringify(result);
+    form.classList.add("was-validated");
   }
 }
 

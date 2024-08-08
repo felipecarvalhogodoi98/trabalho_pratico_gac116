@@ -19,20 +19,32 @@
           <div class="mb-3">
             <label for="title" class="form-label">Título:</label>
             <input type="text" id="title" name="title" class="form-control" required>
+            <div class="invalid-feedback">
+              Preencha o título.
+            </div>
           </div>
 
           <div class="mb-3">
             <label for="description" class="form-label">Descrição:</label>
             <textarea id="description" name="description" class="form-control" required></textarea>
+            <div class="invalid-feedback">
+              Preencha a descrição.
+            </div>
           </div> 
 
           <h3 class="fs-4">Benefícios</h3>
           <div id="benefits" class="mb-3">
               <div class="benefit">
                   <label for="benefit-title" class="form-label">Título:</label>
-                  <input type="text" class="benefit-title form-control">
+                  <input type="text" class="benefit-title form-control" required>
+                  <div class="invalid-feedback">
+                    Preencha o título.
+                  </div>
                   <label for="benefit-description" class="form-label">Descrição:</label>
-                  <textarea class="benefit-description form-control"></textarea>
+                  <textarea class="benefit-description form-control" required></textarea>
+                  <div class="invalid-feedback">
+                    Preencha a descrição.
+                  </div>
               </div>
           </div>
           <button type="button" class="btn btn-secondary mb-4 add-benefit">Adicionar Benefício</button>
@@ -41,9 +53,15 @@
           <div id="responsibilities" class="mb-3">
               <div class="responsibility">
                   <label for="responsibility-title" class="form-label">Título:</label>
-                  <input type="text" class="responsibility-title form-control">
+                  <input type="text" class="responsibility-title form-control" required>
+                  <div class="invalid-feedback">
+                    Preencha o título.
+                  </div>
                   <label for="responsibility-description" class="form-label">Descrição:</label>
-                  <textarea class="responsibility-description form-control"></textarea>
+                  <textarea class="responsibility-description form-control" required></textarea>
+                  <div class="invalid-feedback">
+                    Preencha a descrição.
+                  </div>
               </div>
           </div>
           <button type="button" class="btn btn-secondary mb-4 add-responsability">Adicionar Responsabilidade</button>
@@ -52,9 +70,15 @@
           <div id="requirements" class="mb-3">
               <div class="requirement">
                   <label for="requirement-title" class="form-label">Título:</label>
-                  <input type="text" class="requirement-title form-control">
+                  <input type="text" class="requirement-title form-control" required>
+                  <div class="invalid-feedback">
+                    Preencha o título.
+                  </div>
                   <label for="requirement-description" class="form-label">Descrição:</label>
-                  <textarea class="requirement-description form-control"></textarea>
+                  <textarea class="requirement-description form-control" required></textarea>
+                  <div class="invalid-feedback">
+                    Preencha a descrição.
+                  </div>
               </div>
           </div>
           <button type="button" class="btn btn-secondary mb-4 add-requeriment">Adicionar Requerimento</button>

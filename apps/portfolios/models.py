@@ -3,7 +3,7 @@ from apps.users.models import CustomUser
 
 class Portfolio(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    description = models.TextField(max_length=140, default='')
+    description = models.TextField(max_length=1500, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

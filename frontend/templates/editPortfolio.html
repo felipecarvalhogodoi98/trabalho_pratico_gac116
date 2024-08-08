@@ -15,13 +15,19 @@
         <div class="mb-3">
           <label for="description" class="form-label">Descrição:</label>
           <textarea id="description" name="description" class="form-control" required></textarea>
+          <div class="invalid-feedback">
+            Preencha a descrição.
+          </div>
         </div>
 
         <h3 class="fs-4">Certificados</h3>
         <div id="certificates" class="mb-3">
             <div class="certificate mb-3">
               <label for="certificate-description" class="form-label">Descrição:</label>
-              <input type="certificate-description" class="certificate-description form-control">
+              <input type="certificate-description" class="certificate-description form-control" required>
+              <div class="invalid-feedback">
+                Preencha a descrição do certificado.
+              </div>
             </div>
         </div>
         <button type="button" class="btn btn-secondary mb-4 add-certificate">Adicionar Certificado</button>
@@ -30,7 +36,10 @@
         <div id="skills" class="mb-3">
             <div class="skill mb-3">
               <label for="skill-description" class="form-label">Descrição:</label>
-              <input type="skill-description" class="skill-description form-control">
+              <input type="skill-description" class="skill-description form-control" required>
+              <div class="invalid-feedback">
+                Preencha a descrição da skill.
+              </div>
             </div>
         </div>
         <button type="button" class="btn btn-secondary mb-4 add-skill">Adicionar Skill</button>
@@ -39,13 +48,22 @@
         <div id="projects" class="mb-3">
             <div class="project mb-3">
               <label for="project-description" class="form-label">Name:</label>
-              <input type="text" class="project-description form-control mb-3">
+              <input type="text" class="project-description form-control mb-3" required>
+              <div class="invalid-feedback">
+                Preencha o nome do projeto.
+              </div>
 
               <label for="project-link" class="form-label">Link:</label>
-              <input type="text" class="project-link form-control mb-3">
+              <input type="text" class="project-link form-control mb-3" required>
+              <div class="invalid-feedback">
+                Preencha o link do projeto.
+              </div>
 
               <label for="project-git" class="form-label">Git:</label>
-              <input type="text" class="project-git form-control mb-3">
+              <input type="text" class="project-git form-control mb-3" required>
+              <div class="invalid-feedback">
+                Preencha o link do github do projeto.
+              </div>
             </div>
         </div>
         <button type="button" class="btn btn-secondary mb-4 add-project">Adicionar Skill</button>

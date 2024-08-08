@@ -45,6 +45,13 @@ function addRequirement() {
 
 async function submitForm(e) {
   e.preventDefault();
+  form.classList.remove("was-validated");
+
+  if (!form.checkValidity()) {
+    form.classList.add("was-validated");
+    return;
+  }
+
   const title = document.getElementById("title").value;
   const description = document.getElementById("description").value;
 
@@ -140,8 +147,7 @@ async function submitForm(e) {
       );
     } else {
       const errorData = await response.json();
-      document.getElementById("response").innerText =
-        "Registration failed: " + JSON.stringify(errorData);
+      displayErrors(errorData);
     }
   } catch (error) {
     registerVacancyModal.querySelector(".modal-title").innerText = "Erro!";
@@ -152,8 +158,29 @@ async function submitForm(e) {
   }
 }
 
+function displayErrors(errors) {
+  responseHtml.innerHTML = "<ul class='error-list'></ul>";
+  const errorList = responseHtml.querySelector(".error-list");
+
+  Object.entries(errors).forEach(([field, messages]) => {
+    if (Array.isArray(messages)) {
+      messages.forEach((message) => {
+        const li = document.createElement("li");
+        li.innerText = `${field}: ${message}`;
+        errorList.appendChild(li);
+      });
+    } else {
+      const li = document.createElement("li");
+      li.innerText = `${field}: ${messages}`;
+      errorList.appendChild(li);
+    }
+  });
+}
+
 const registerVacancyModal = document.getElementById("register-vacancy-modal");
 const registerVacancyModalBootstrap = new bootstrap.Modal(registerVacancyModal);
+const form = document.querySelector("#vacancy-form");
+const responseHtml = document.getElementById("response");
 
 document.querySelector(".add-benefit").addEventListener("click", addBenefit);
 document
@@ -164,5 +191,5 @@ document
   .addEventListener("click", addRequirement);
 
 document
-  .querySelector("#vacancy-form button[type=submit]")
+  .querySelector("button[type=submit]")
   .addEventListener("click", (e) => submitForm(e));
