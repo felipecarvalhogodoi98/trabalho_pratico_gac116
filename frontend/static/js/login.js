@@ -1,5 +1,6 @@
 const form = document.querySelector("#login-form");
 const loginButton = form.querySelector("button");
+const responseHtml = document.getElementById("response");
 
 function isAuthenticated() {
   return localStorage.getItem("access_token") !== null;
@@ -7,6 +8,11 @@ function isAuthenticated() {
 
 async function loginUser() {
   form.classList.remove("was-validated");
+
+  if (!form.checkValidity()) {
+    form.classList.add("was-validated");
+    return;
+  }
 
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -28,8 +34,27 @@ async function loginUser() {
 
     window.location = "/";
   } else {
-    form.classList.add("was-validated");
+    displayErrors({ Erro: "Verifique seu usuario e senha!" });
   }
+}
+
+function displayErrors(errors) {
+  responseHtml.innerHTML = "<ul class='error-list'></ul>";
+  const errorList = responseHtml.querySelector(".error-list");
+
+  Object.entries(errors).forEach(([field, messages]) => {
+    if (Array.isArray(messages)) {
+      messages.forEach((message) => {
+        const li = document.createElement("li");
+        li.innerText = `${field}: ${message}`;
+        errorList.appendChild(li);
+      });
+    } else {
+      const li = document.createElement("li");
+      li.innerText = `${field}: ${messages}`;
+      errorList.appendChild(li);
+    }
+  });
 }
 
 loginButton.addEventListener("click", loginUser);

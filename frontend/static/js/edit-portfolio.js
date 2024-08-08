@@ -40,6 +40,7 @@ function addCertificate({ description = "", id }) {
   }
   newCertificate.querySelector(".certificate-description").value = description;
 
+  containerCertificates.append(document.createElement("hr"));
   containerCertificates.append(newCertificate);
 }
 
@@ -53,6 +54,7 @@ function addSkill({ description = "", id }) {
   }
   newSkill.querySelector(".skill-description").value = description;
 
+  containerSkills.append(document.createElement("hr"));
   containerSkills.append(newSkill);
 }
 
@@ -70,6 +72,7 @@ function addProject({ description = "", link_site = "", link_git = "", id }) {
   newProject.querySelector(".project-link").value = link_site;
   newProject.querySelector(".project-git").value = link_git;
 
+  containerProjects.append(document.createElement("hr"));
   containerProjects.append(newProject);
 }
 

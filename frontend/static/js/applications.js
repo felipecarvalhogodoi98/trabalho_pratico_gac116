@@ -35,7 +35,7 @@ async function getCompanyApplications() {
 function createUserApplicationCard(application) {
   const applicationElement = document.createElement("div");
   applicationElement.classList.add("application-item", "card", "mb-3", "p-0");
-  console.log(application);
+
   applicationElement.innerHTML = `
     <div class="card-body p-0">
       <h5 class="card-header d-flex gap-3 justify-content-between align-items-center">
@@ -73,9 +73,11 @@ function createCompanyApplicationCard(application) {
       <div class="p-3">
         <p class="card-text">${application.description}</p>
         
-        ${application.applications
-          .map((ap) => {
-            return `
+        ${
+          application.applications.length
+            ? application.applications
+                .map((ap) => {
+                  return `
             <div class="card p-2 mb-2">
               <div class="d-flex justify-content-between">
                 <span class="username text-light me-3">${
@@ -88,8 +90,10 @@ function createCompanyApplicationCard(application) {
               </div>
             </div>
           `;
-          })
-          .join("")}
+                })
+                .join("")
+            : "Nenhuma aplicação"
+        }
         </div>
       </div>
     </div>
@@ -106,6 +110,10 @@ async function displayUserApplications(getApplications) {
 
   try {
     const applications = await getApplications();
+
+    if (applications.length == 0) {
+      applicationsContainer.innerText = "Nenhuma aplicação";
+    }
 
     applications.forEach((application) => {
       const applicationElement = createUserApplicationCard(application);
@@ -124,6 +132,10 @@ async function displayCompanyApplications(getApplications) {
 
   try {
     const applications = await getApplications();
+
+    if (applications.length == 0) {
+      applicationsContainer.innerText = "Nenhuma vaga cadastrada";
+    }
 
     applications.forEach((application) => {
       const applicationElement = createCompanyApplicationCard(application);

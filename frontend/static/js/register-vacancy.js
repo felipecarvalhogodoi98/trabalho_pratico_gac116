@@ -10,6 +10,7 @@ function addBenefit() {
     <textarea class="benefit-description form-control"></textarea>
   `;
 
+  benefitsContainer.append(document.createElement("hr"));
   benefitsContainer.appendChild(benefitDiv);
 }
 
@@ -24,7 +25,7 @@ function addResponsibility() {
     <label for="responsibility-description" class="form-label">Descrição:</label>
     <textarea class="responsibility-description form-control"></textarea>
   `;
-
+  responsibilitiesContainer.append(document.createElement("hr"));
   responsibilitiesContainer.appendChild(responsibilityDiv);
 }
 
@@ -40,6 +41,7 @@ function addRequirement() {
     <textarea class="requirement-description form-control"></textarea>
   `;
 
+  requirementsContainer.append(document.createElement("hr"));
   requirementsContainer.appendChild(requirementDiv);
 }
 

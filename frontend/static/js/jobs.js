@@ -106,15 +106,22 @@ function fillLists(container, list, name) {
 function getDateString(date) {
   const dateObj = new Date(date);
   const todayObj = new Date();
-
   const diff = todayObj - dateObj;
 
-  const diffInDays = Math.floor(diff / (24 * 3600 * 1000));
+  const diffInMinutes = Math.floor(diff / (1000 * 60));
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  const diffInDays = Math.floor(diffInHours / 24);
 
-  if (diffInDays > 1) return `${diffInDays} days ago`;
-  if (diffInDays == 1) `1 day ago`;
+  if (diffInDays > 1) return `${diffInDays} dias atrás`;
+  if (diffInDays === 1) return `1 dia atrás`;
 
-  return `today`;
+  if (diffInHours > 1) return `${diffInHours} horas atrás`;
+  if (diffInHours === 1) return `1 hora atrás`;
+
+  if (diffInMinutes > 1) return `${diffInMinutes} minutos atrás`;
+  if (diffInMinutes === 1) return `1 minuto atrás`;
+
+  return `agora`;
 }
 
 const applyModal = document.getElementById("apply-modal");
